@@ -56,7 +56,7 @@ const Contact = () => {
         setIsSubmitting(true);
         
         try {
-            const response = await fetch('/api/postcontect', {
+            const response = await fetch('http://localhost:3000/api/postcontact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
