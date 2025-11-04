@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Geist } from "next/font/google";
+import { ToastContainer, toast } from "react-toastify";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -89,6 +90,19 @@ const Contact = () => {
         }
     };
 
+   const handelsubmit=(e)=>{
+      e.preventDefault();
+       toast.success("Message send successfully!", {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+      });
+       setFormData({ name: '', email: '', phone: '', desc: '' });
+  }
+
     return (
         <div className={geist.className}>
             <Head>
@@ -97,6 +111,19 @@ const Contact = () => {
             </Head>
             
             <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+            <ToastContainer
+              position="top-right"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              // transition={Bounce}
+            />
                 {/* Hero Section */}
                 <div className={`relative bg-gradient-to-r from-blue-600 to-indigo-700 py-16 overflow-hidden transition-all duration-1000 ${isPageLoaded ? 'opacity-100' : 'opacity-0'}`}>
                     <div className="absolute inset-0 opacity-20">
@@ -310,6 +337,7 @@ const Contact = () => {
                                         </div>
                                         
                                         <button
+                                            onClick={handelsubmit}
                                             type="submit"
                                             disabled={isSubmitting}
                                             className={`w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-medium rounded-lg transition-all transform hover:-translate-y-1 hover:shadow-lg ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
@@ -370,4 +398,5 @@ export default Contact;
 //i am change this some time after
 //seaarch console use for hostings
 //digital losen
+
 //
